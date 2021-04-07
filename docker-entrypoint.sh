@@ -1,7 +1,8 @@
 #!/bin/bash -x
 # vim: set ts=4 sts=4 sw=4 et:
 
-set -euo pipefail
+## ignore errors
+#set -euo pipefail
 
 stderr() {
     echo "$@" >&2
@@ -58,4 +59,7 @@ EOF
 fixpermissions
 
 # and now that we're all good, run rancid itself
-exec "$@"
+while true
+do
+  sleep 3600 ; exec "$@"
+done
